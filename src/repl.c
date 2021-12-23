@@ -172,8 +172,19 @@ static const R_CallMethodDef CallAPI[] = {
     {NULL, NULL, 0}
 };
 
+/* Linkable API:
+   sWhat == NULL-pointer -> get, otherwise set
+   Always returns the current context (guaranteed to be valid SEXP)
+*/
+SEXP repl_context(SEXP sWhat) {
+    if (sWhat)
+	repl_set_context(sWhat);
+    return repl_get_context();
+}
+
 void R_init_repl(DllInfo *dll)
 {
     R_registerRoutines(dll, NULL, CallAPI, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
+    R_RegisterCCallable("repl", "repl_context", (DL_FUNC) &repl_context);
 }
