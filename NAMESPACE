@@ -1,2 +1,3 @@
 useDynLib(repl, .registration=TRUE)
-exportPattern("^repl")
+export(repl.eval)
+export(repl.context)

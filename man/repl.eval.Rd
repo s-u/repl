@@ -7,8 +7,8 @@
   Among other things this means printing the result of each expression
   if visible. The function is guaranteed to not raise an error and in
   case of an error it returns an object of class
-  \code{repl-eval-error} with details including the error and the
-  stack trace.
+  \code{repl-eval-error} with details including the error, the
+  call trace and the error condition object.
 }
 \usage{
 repl.eval(what, where = .GlobalEnv, last.value = FALSE, exp.value = FALSE,
@@ -62,16 +62,18 @@ repl.eval(what, where = .GlobalEnv, last.value = FALSE, exp.value = FALSE,
   expression otherwise.
 }
 \note{
-  repl versions up to 1.8-10 did not include the \code{condition}
+  Rserve versions up to 1.8-10 did not include the \code{condition}
   component, no calling handlers were registered and there was no
   \code{condition} component in the result. To replicate that behavior
   or if you don't need that information, you can set
   \code{handlers=NULL} which removes the overhead of adding calling
   handlers.
 
-  No error checking is performed on the
-  \code{handlers} parameter, so make sure it is avalid, named list of
-  functions, otherwise an error will occur at evaluation time.
+  Currently, no error checking is performed on the
+  \code{handlers} parameter, so make sure it is a valid, named list of
+  functions, otherwise an error will occur at evaluation time which
+  will be reported back as output while no expressions from
+  \code{what} will be evaluated.
 }
 \author{
   Simon Urbanek
