@@ -1,0 +1,2 @@
+useDynLib(repl, .registration=TRUE)
+exportPattern("^repl")

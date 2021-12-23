@@ -1,0 +1,12 @@
+Package: repl
+Title: Read Evaluate Print Loop (REPL)
+Version: 1.0-0
+Author: Simon Urbanek <simon.urbanek@R-project.org>
+Maintainer: Simon Urbanek <simon.urbanek@R-project.org>
+Description: Implements Read Evaluate Print Loop (REPL) in
+	     user-space to make it easy to implement R
+	     console behavior with advanced features such
+	     as tracebacks and error handling. This code
+	     has been originally implemented in Rserve for
+	     use by RCloud.
+License: MIT + file LICENSE
